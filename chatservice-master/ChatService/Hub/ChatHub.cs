@@ -37,6 +37,7 @@ namespace SignalRChat.Hubs
             _connections[Context.ConnectionId] = userConnection;
 
             await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnection.User} has joined {userConnection.Room}");
+            await Clients.Group(userConnection.Room).SendAsync("ReceiveCode", _botUser);
 
             await SendUsersConnected(userConnection.Room);
         }
@@ -46,6 +47,14 @@ namespace SignalRChat.Hubs
             if (_connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection))
             {
                 await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.User, message);
+            }
+        }
+
+        public async Task SendCode(string code)
+        {
+            if (_connections.TryGetValue(Context.ConnectionId, out UserConnection  userConnection)) 
+            {
+                await Clients.Group(userConnection.Room).SendAsync("ReceiveCode", userConnection.User, code);
             }
         }
 

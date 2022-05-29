@@ -1,18 +1,16 @@
 import SendMessageForm from './SendMessageForm';
 import MessageContainer from './MessageContainer';
 import ConnectedUsers from './ConnectedUsers';
-import CodeEditor from './CodeEditor';
+
 
 import { Button } from 'react-bootstrap';
 
-const Chat = ({ sendMessage, messages, users, closeConnection }) => <div>
+
+const Chat = ({ sendMessage, messages, users, closeConnection, sendCode, codes }) => <div>
     <div className='leave-room'>
         <Button variant='danger' onClick={() => closeConnection()}>Leave Room</Button>
     </div>
     <ConnectedUsers users={users} />
-    <div className='codeeditor'>
-    <CodeEditor/>
-    </div>
     <div className='chat'>
         <MessageContainer messages={messages} />
         <SendMessageForm sendMessage={sendMessage} />

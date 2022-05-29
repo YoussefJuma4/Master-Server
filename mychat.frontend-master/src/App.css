@@ -28,6 +28,7 @@ hr.line {
 }
 
 .chat {
+    float: left;
     display: grid;
 }
 
@@ -47,17 +48,19 @@ hr.line {
 }
 
 .message-container {
-  
+    position: relative;
     float: inline-end;
-    width: 600px;
-    height: 100px;    
+    width: auto;
+    height: 500px;    
     background-color: white;
+    /* background-image: url('./assets/images/starry-sky-2675322_1920.jpg'); */
     overflow: auto;
     box-shadow: 2px 1px 1px 1px rgba(0,0,0,0.2);
 
     border-radius: 5px;
     margin-bottom: 2px;
 }
+
 
 .user-message {
     
@@ -82,4 +85,10 @@ hr.line {
     font-size: small;
     margin-bottom: 3px;
     margin-right: 5px;
+}
+
+.messageSend{
+    position: sticky;
+    float: right;
+    width: auto;
 }

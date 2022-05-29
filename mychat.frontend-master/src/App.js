@@ -20,7 +20,9 @@ const App = () => {
 
       connection.on("ReceiveMessage", (user, message) => {
         setMessages(messages => [...messages, { user, message }]);
+      
       });
+    
 
       connection.on("UsersInRoom", (users) => {
         setUsers(users);
@@ -44,6 +46,15 @@ const App = () => {
     try {
       await connection.invoke("SendMessage", message);
     } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const sendCode = async (code) => {
+    try{
+      await connection.invoke("SendCode",code);
+
+    }catch (e) {
       console.log(e);
     }
   }

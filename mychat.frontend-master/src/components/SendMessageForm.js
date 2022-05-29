@@ -11,8 +11,10 @@ const SendMessageForm = ({ sendMessage }) => {
             setMessage('');
         }}>
         <InputGroup>
-            <FormControl type="user" placeholder="message..."
+            <div className='messageSend'>
+            <FormControl  type="user" placeholder="message..."
                 onChange={e => setMessage(e.target.value)} value={message} />
+            </div>
             <InputGroup.Append>
                 <Button variant="primary" type="submit" disabled={!message}>Send</Button>
             </InputGroup.Append>
